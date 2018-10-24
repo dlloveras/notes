@@ -1,0 +1,31 @@
+Linea de trabajo con Albert y Enrico (KCOR)
+
+
+Hasta lo mostrado en sochias conluimos que:
+*demt da un proxy para Ne, mientras que luz blanca da directo Ne
+*Eso podria explicar el gap que hay entre los resultados tomograficos de cada uno pero falta hacer que las tomografias se parezcan mas y ademas falta hacer la substraccion del cielo en kcor.
+*para que las tomos se parezcanjugamos con la cadenacia de AIA. Hicimos tomografias hollow con 1 imagen por dia pero aparecieron muchas zda. creo que tmb ccambiamos la regularizacion. de hecho subregularizamos kcor para que se parezca mas a AIA.
+
+TAREAS:
+Hacer tomografias tapando los datos de AIA hasta 1.09 (misma distancia que Kcor) con la intencion de que vean misma estructura (es medio un chamullo xq uno ve emision y el otro scattering) per quizas asi se asemejen un poco mas.
+
+
+OBS: aun no mire como da EUVI con cr2198, todo lo demas lo hicimos con AIA
+
+
+
+Linea de trabajo con chip y nishtha utilizando swmf
+
+Luego del congreso de solar en bsas decidimos hacer tomo con CR2082 y comparar con awsom. 
+
+Le pasamos a chip y nishtha FD -DECON con EUVI y H1 DECON de 2082. 
+Estamos viendo si hay forma de reducir las ZDA o AEVs. Algunas cosas son debiudo a la baja emisividad de 284. Albert mando algun mail.
+Se habló de modificar el factor Ck de la minimizacion o incluso dejar de lado la banda 284 segun el caso.
+El tema es que las FBES muestran zdas distintas en cada banda y entonces lo que vemos en los resultados es la suma de todas las zda de las bandas y no parece haber una buena forma de solucionarlo.
+
+TAREAS: Hay un catalogo con las rotaciones y la idea es decidir una mas reciente descargar TODAS las imagnes posibles y analizarlas luego con imagecheck etc.
+Hacer una tomo bien pulenta y hacer comparacion con el modelo awesom.
+La idea es comparar los ultimos 2 minimos con awesom y a ver que pasa.
+
+
+
