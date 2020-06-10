@@ -30,5 +30,9 @@ Hay un catalogo con las rotaciones y la idea es decidir una mas reciente descarg
 Hacer una tomo bien pulenta y hacer comparacion con el modelo awesom.
 La idea es comparar los ultimos 2 minimos con awesom y a ver que pasa.
 
+Las soluciones NewSet y NewSet2 tienen valores de FBE muy grandes en la parte de la esfera de cálculo exterior a INTR_RMAX. Evidentemente extender la malla más allá de los datos, es decir RMAX > INSTR_RMAX, no está siendo buena idea con EUV. 
+
+
+Es bueno que mires todos los ZIP y veas los comportamientos no-sanos de la FBE195 al usar NewSet, por ejemplo: en la región INSTR_RMAX < r < RMAX, la FBE sube con la altura, y alcanza valores MUY SUPERIORES a los de la región r < INSTR_RMIN, lo cual es inaceptable.
 
 
