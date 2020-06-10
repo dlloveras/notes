@@ -1,0 +1,28 @@
+Notas tesis de doctorado --- vamos los pibes lrpmqlrmp
+
+Del cuasi libro de springer
+Extended MHD modeling of the steady solar corona and the solar wind
+(Tamas Gombosi, Igor V. Sokolov, Bart van der Holst,  Ward B. Manchester)
+El capítulo 5 discribe la matematica del modelo con ondas de alfven.
+El capitulo 6 describe AWSoM
+la clave del modelo es "The potential role of low-frequency Alfvén waves to provide heat and momentum to accelerate the solar wind" -> ver si en el capitulo 5 se explica eso.
+*Ver capitulo 5 del apunte de minotti!
+
+
+
+
+
+
+
+
+
+
+
+
+
+Materia minnini
+ver si en el libro “Turbulence: An introduction for scientists and engineers“, P.A. Davidson, Cambridge University Press (2004). 
+dice algo de turbulencia MHD.
+Lo ultimo que vimos en la materia es:
+Turbulencia en astrofísica y física espacial: Fluidos conductores – Aproximación magnetohidrodinámica – Teorema de Alfvén – Ondas de Alfvén – Magnetismo terrestre – Dínamos magnetohidrodinámicos.
+
