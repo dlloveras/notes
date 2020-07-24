@@ -136,8 +136,12 @@ para EUV usualmente usamos
 #define MAX_LAMBDA 5.e+0
 make clean
 make auto_cv_brent
-ulimit -s unlimited
+antes y entre aca largada de nohup correr -->  ulimit -s unlimited
    nohup ./auto_cv_brent -r5 -w1 -m matriz -i fbe_input -o fbe_output(debe indicar r5w1 o lo que sea) > termout 2>&1 &
+
+IMPORTANTE: largar los codigos espaciados en tiempo al menos unos segundos, ya que el codigo reorganiza matrices y les pone nombres segun la hora de creacion del termout
+y ha pasado que se crean dos matrices con el mismo nombre para dos corridas distintas.
+
 esto arroja datos de lambda en el termout que deben rescatarse con un  grep 'function value' termout, todo se guarda en validacion_cruzada.txt 
 y solemos usar las medianas (sacando los outliers) como lambda optimos para rehacer las fbes optimas y luego ldem finales.
 OBS: cualquier duda ver mail llamado "auto_cv: parámetros de convergencia"
@@ -216,7 +220,8 @@ la keyword /interpol interpolara la grilla de datos a la grilla tomografica. hay
 1) BAJAR magnetograma sinóptico de:
 GONG >
  http://gong.nso.edu/data/magmap/crmap.html
- MDI >
+
+MDI >
  http://soi.stanford.edu/magnetic/index6.html
  ELEGIR Interpolated Polar Field
  
