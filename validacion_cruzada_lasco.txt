@@ -1,0 +1,100 @@
+grep "function value" termout.autocv.LASCOC2pB_CR2223_24hr_BF4_r3D.r1w1_v2
+function value = 2.07805e-05
+function value = 1.05097e-05
+function value = 5.60953e-06
+function value = 3.22782e-06
+function value = 2.36922e-06
+function value = 2.63809e-06
+function value = 4.22903e-06
+function value = 9.1102e-06
+function value = 2.24976e-06
+function value = 5.02959e-06
+function value = 1.10055e-05
+function value = 1.86422e-05
+function value = 0.000138959
+
+
+vec_bf4=[2.07805e-05,1.05097e-05,5.60953e-06,3.22782e-06,2.36922e-06,2.63809e-06,4.22903e-06,9.1102e-06,2.24976e-06,5.02959e-06,1.10055e-05,1.86422e-05,0.00013895]
+print, max(vec_bf4),min(vec_bf4),mean(vec_bf4),median(vec_bf4),stdev(vec_bf4)
+con todo 
+0.000138950  2.24976e-06  1.80270e-05  5.60953e-06  3.68319e-05
+
+sin el ultimo outlier
+2.07805e-05  2.24976e-06  7.95009e-06  5.60953e-06  6.31149e-06
+L_opt=7.95009e-06 +- 6.31149e-06  => L C [1.42616e-05  ,  1.63860e-06] => no me parece mal estirarlo hasta L 1.7e-5
+
+
+ grep "function value" termout.autocv.LASCOC2pB_CR2223_24hr_BF2_r3D_r1w1_v2
+function value = 3.60521e-05
+function value = 2.00982e-05
+function value = 1.07622e-05
+function value = 6.56777e-06
+function value = 4.76757e-06
+function value = 5.0403e-06
+function value = 8.32819e-06
+function value = 1.81346e-05
+function value = 4.50243e-06
+function value = 9.92761e-06
+function value = 2.21606e-05
+function value = 3.67134e-05
+function value = 0.000260915
+
+
+vec_bf2=[3.60521e-05,2.00982e-05,1.07622e-05,6.56777e-06,4.76757e-06,5.0403e-06,8.32819e-06,1.81346e-05,4.50243e-06,9.92761e-06,2.21606e-05,3.67134e-05,0.000260915]
+print, max(vec_bf2),min(vec_bf2),mean(vec_bf2),median(vec_bf2),stdev(vec_bf2)
+con todo
+0.000260915  4.50243e-06  3.41515e-05  1.07622e-05  6.90297e-05
+
+sin el ultimo outlier
+3.67134e-05  4.50243e-06  1.52546e-05  1.07622e-05  1.15773e-05
+L_opt = 1.52546e-05 +- 1.15773e-05 => L C [3.67730e-06 , 2.68319e-05  ] => no me parece mal estirarlo hasta L 2.7e-5
+
+
+
+
+
+grep "function value" termout.autocv.LASCOC2pB_CR2223_24hr_BF1_r3D.r1w1_v2
+function value = 6.9133e-05
+function value = 4.01631e-05
+function value = 2.16335e-05
+function value = 1.33581e-05
+function value = 9.70296e-06
+function value = 1.01226e-05
+function value = 1.65648e-05
+function value = 3.70257e-05
+function value = 9.10482e-06
+function value = 2.01455e-05
+function value = 4.36439e-05
+
+
+
+vec_bf1 = [6.9133e-05,4.01631e-05,2.16335e-05,1.33581e-05,9.70296e-06,1.01226e-05,1.65648e-05,3.70257e-05,9.10482e-06,2.01455e-05,4.36439e-05]
+
+
+print, max(vec_bf1),min(vec_bf1),mean(vec_bf1),median(vec_bf1),stdev(vec_bf1)
+ 6.91330e-05  9.10482e-06  2.64180e-05  2.01455e-05  1.89666e-05
+L_opt = 2.64180e-05 +- 1.89666e-05 => L_opt C [7.45140e-06, 4.53846e-05 ] => no me parece mal estirarlo hasta L 4.5e-5
+
+
+
+
+
+
+
+
+
+
+plot, vec_bf4\1.e-5
+oplot, vec_bf2\1.e-5
+
+
+
+v= [ 0.000145012, 1.08598e-05, 7.33533e-06, 3.47044e-06, 2.4644e-06,2.78251e-06, 3.53196e-06, 3.88327e-06, 3.57349e-06, 3.26029e-06,4.44041e-06,8.57419e-06, 9.34435e-06, 3.41962e-05]
+
+
+
+
+
+
+
+
