@@ -1,0 +1,22 @@
+Validacion cruzada Kcor
+
+CR-2223
+grep "function" termout.autocv.KCOR_CR2223_24hr_BF2_r3D.r1w1
+function value = 8.1564e-05
+function value = 8.70348e-05
+function value = 9.5003e-05
+function value = 7.20929e-05
+function value = 6.42711e-05
+function value = 7.59467e-05
+function value = 0.000124518
+function value = 8.01837e-05
+function value = 9.90981e-05
+function value = 9.25871e-05
+function value = 5.28006e-05
+
+vec=[8.1564e-05,8.70348e-05, 9.5003e-05, 7.20929e-05, 6.42711e-05, 7.59467e-05, 0.000124518,8.01837e-05,9.90981e-05, 9.25871e-05,5.28006e-05]
+
+ print, max(vec),min(vec),mean(vec),median(vec),stdev(vec)
+  0.000124518  5.28006e-05  8.41000e-05  8.15640e-05  1.91398e-05
+
+
