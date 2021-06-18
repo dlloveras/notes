@@ -1,0 +1,120 @@
+Este tutorial contiene la información necesaria para manipulación de datos VL:
+
+  * KCOR,  
+  * LASCO-C2 (de LAM exlcusivamente, no de NRL),
+
+realización de tomografía con ellos, y manipulación de tomografías LASCO-C2 de LAM.
+
+================================================================
+1) Manipulación de tomografías LASCO-C2 de LAM en formato HDF5.
+
+Ver estos dos códigos. En sus headers está toda la información:
+$tomroot/SolarTom_idl/extract.pro
+$tomroot/SolarTom_idl/xlam_extract_tom.pro
+
+================================================================
+2) Preparación de datos VL para tomografía.
+
+Datos LASCO-C2 de LAM (exclusivamente, no de NRL) o de KCOR
+
+Bajar los datos del LASCO-C2 Legacy Archive
+http://idoc-lasco.ias.u-psud.fr/sitools/client-portal/doc/
+
+Bajar los datos de KCOR de:
+https://www2.hao.ucar.edu/cosmo/k-cor
+
+Para preparar las imágenes para tomografía usar los siguientes códigos.
+En sus headers está toda la información:
+
+$tomroot/SolarTom_idl/lasco_mars_prep.pro
+$tomroot/SolarTom_idl/kcor_prep.pro
+
+Estos códigos generan las imágenes *_prep.fts con header expandido
+y con filenames ordenados cronológicamente (las imágenes de LAM
+no lo están originalmente). Además genera un GIF file por imágen.
+Seleccionar las imágenes deseadas para tomografía, colocándo sus GIF
+files en un sub-directorio específico.
+
+================================================================
+3) Inspección y selección de datos VL para tomografía.
+
+Para inspeccionarlas y decidir si se eliminan algunas, utilizar el
+siguiente código apuntando al subdirectorio con las imágenes:
+
+$tomroot/SolarTom_idl/make_movie_script.pro
+
+Este código genera en ese subdirectorio un script que transforma
+los GIF files en "frames" JPG y que crea de ellos una película.
+Correr el script creado en linea de comando, por ejemplo:
+
+source ./movie.mkv_movie_script.sh
+
+Mirar la película con cuidado para eliminar imágenes indeseables
+(CMEs, otros..). Ante la duda consultar catálogo ARTEMIS-P (o el ARTEMIS,
+según corresponda) de CMEs del mismo LASCO-C2 Legacy Archive.
+
+================================================================
+4) Realización de tomografía VL:
+
+----------------------------------------------------------------
+Tomografía LASCO-C2 (de LAM exclusivamente, no de NRL): 
+
+a) buildA_params.h (solo aclaro lo que puede variar en cada target)
+#elif defined C2BUILD
+#define INSTR_RMIN  2.5
+#define INSTR_RMAX  6.0
+#define RMIN        2.5
+#define RMAX        7.5
+#define NRAD         50   /* Fijar para que Delta(rad)=0.1 Rsun */  
+#define NTHETA       90   /* LAM usa 60 y en el pasado Albert hizo corridas con 60 para comparación directa.
+                             Considero que es mejor poner 90 aquí, y preparar las x-tools para lidiar
+			     con comparaciones basadas en grillas diferentes, interpolando la de mayor
+			     reslución a la de menor*/
+#define BINFAC    4      /* Este es el valor adecuado para imágenes LASCO-C2 512^2, y la grilla de cálculo
+                            de arriba. Albert experimentó con valores menores (2 y 1), lo cual empeora
+			    progresivamentela calidad de la reconstrucción */
+
+
+b) solve_cv_parms.h (solo aclaro lo que puede variar en cada target)
+#define NMATS 2                         /* total number of matrices: A1, possibly A2, plus Reg1,... */  
+#define NUMBER_OF_DATA_MATRICES 1	/* number observation matrices */
+#define FILESTR0 "xxx"
+#define FILESTR1 "r3_NRAD_NTHETA_NPHI"  /* colocar el filename adecuado de acuerdo a la grilla
+                                           especificada enen buildA_params.h */
+
+NOTA: Para LASCO, usando UNA IMAGEN CADA 6 HORAS (es decir unas 56 imágenes en total) y con estos parámetros de grilla, un nivel de regularización inicial razonable es lambda = 1.e-4. Luego se usa esa solución como inicial para el estudio de validación cruzada.
+
+----------------------------------------------------------------
+Tomografía KCOR: (todavía debo optimizar la grilla)
+
+a) buildA_params.h (solo aclaro lo que puede variar en cada target)
+#define KCORBUILD
+#define INSTR_RMIN   1.09 /* Determinar el mímimo posible que haga sentido, inspeccionando
+                             las imágenes. Depende sensiblemente de la posición orbital de la Tierra */
+#define INSTR_RMAX   2.00 
+#define RMIN         1.05 /* Debe ser menor estricto a INSTR_RMIN */
+#define RMAX         2.25 
+#define NRAD         120  /* Depende de RMIN y RMAX. Fijar para que Delta(rad)=0.01 Rsun */
+#define NTHETA       90   
+#define BINFAC        2
+
+b) solve_cv_parms.h (solo aclaro lo que puede variar en cada target)
+#define NMATS 2                         /* total number of matrices: A1, possibly A2, plus Reg1,... */  
+#define NUMBER_OF_DATA_MATRICES 1	/* number observation matrices */
+#define FILESTR0 "xxx"
+#define FILESTR1 "r3_NRAD_NTHETA_NPHI"  /* colocar el filename adecuado de acuerdo a la grilla
+                                           especificada enen buildA_params.h */
+
+NOTA: Para KCOR, y con estos parámetros de grilla, un nivel de regularización inicial razonable es lambda = 1.e-4. Luego podes usar esa solución cmo inicial para el estudio de validación cruzada y debería correr en menos de un día.
+
+================================================================
+5) Validación cruzada VL:
+
+* LASCO-C2:
+#define MIN_LAMBDA 1.e-7
+#define MAX_LAMBDA 1.e-3
+
+* KCOR:  Por ahora probar los mismos, confirmmo/corrijo próximamente.
+
+----------------------end of file-------------------------------
+
